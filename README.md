@@ -15,7 +15,7 @@ curl -fLsS https://raw.githubusercontent.com/lilithhafner/quickdraw/main/script 
 
 ## Windows
 ```
-(echo julia -e "import Pkg; Pkg.activate(\"PACKAGE\", shared=true); try Pkg.add(url=\"LOCATOR\") catch; println(\"Warning: update failed\") end; using PACKAGE: main; main()" && echo pause) > PACKAGE.bat
+(echo julia -e "import Pkg; Pkg.activate(\"PACKAGE\", shared=true); try Pkg.add(url=\"LOCATOR\") catch; println(\"Warning: update failed\") end; using PACKAGE: main; main()" %0 %* && echo pause) > PACKAGE.bat
 ```
 
 where LOCATOR is the url of the package or, if registered, simply the name of the package.
@@ -31,7 +31,7 @@ curl -fLsS https://raw.githubusercontent.com/lilithhafner/quickdraw/main/script 
 
 ## Windows
 ```
-(echo julia -e "import Pkg; Pkg.activate(\"ManualImageCoding\", shared=true); try Pkg.add(url=\"https://github.com/LilithHafner/ManualImageCoding.jl\"); catch; println(\"Warning: update failed\") end; using ManualImageCoding: main; main()" && echo pause) > ManualImageCoding.bat
+(echo julia -e "import Pkg; Pkg.activate(\"ManualImageCoding\", shared=true); try Pkg.add(url=\"https://github.com/LilithHafner/ManualImageCoding.jl\"); catch; println(\"Warning: update failed\") end; using ManualImageCoding: main; main()" %0 %* && echo pause) > ManualImageCoding.bat
 ```
 
 This command will create an executable called `ManualImageCoding` that can be double
