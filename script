@@ -25,14 +25,7 @@ else
 
     echo "Now that Julia is installed, we can install $pkg. This might take a while." # Ecosystem-wide TTFX issues...
     # Julia may not yet be on the path of this shell so we launch with an absolute path
-    if [ $(uname -s | cut -c1-3) != "MINGW" ]
-    then
-        # Linux/Mac
-        echo $install | ~/.julia/juliaup/bin/julialauncher
-    else
-        # Windows
-        echo $install | %HOMEDRIVE%%HOMEPATH%\.julia\juliaup\bin\julialauncher.exe
-    fi
+    echo $install | ~/.julia/juliaup/bin/julialauncher
 fi
 
 # Create script
