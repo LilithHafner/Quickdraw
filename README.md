@@ -10,7 +10,7 @@ curl -fLsS https://raw.githubusercontent.com/lilithhafner/quickdraw/main/script 
 ```
 where LOCATOR is the url of the package, or, if registered, simply the name of the package.
 
-For example, to install ManualImageCoding, run this command
+For example, to install ManualImageCoding.jl, run this command
 ```
 curl -fLsS https://raw.githubusercontent.com/lilithhafner/quickdraw/main/script | sh -s https://github.com/LilithHafner/ManualImageCoding.jl
 ```
