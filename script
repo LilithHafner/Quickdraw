@@ -1,0 +1,38 @@
+set -e # Failfast (broken)
+
+loc=$1 # Create varaibles
+pkg=$(basename $loc .jl)
+if [ $loc = $pkg ]
+then
+    loc=\"$loc\"
+else
+    loc=url=\"$loc\"
+fi
+
+install=$(echo 'import Pkg; Pkg.activate("$p", shared=true); Pkg.add($l); using $p: main' | awk '{gsub(/\$p/, p); gsub(/\$l/, l)} 1' p=$pkg l=$loc)
+
+if julia -v
+then
+    # Julia is installed
+    echo "This might take a while." # Ecosystem-wide TTFX issues...
+    echo $install | julia # TODO failfast is broken
+else
+    # Julia is missing; install it with juliaup (https://github.com/JuliaLang/juliaup)
+    # expect -c 'spawn bash -c "curl -fsSL https://install.julialang.org | sh"; expect "Proceed"; send -- "\r"; expect eof' || exit 1
+    # yes | bash -ci "$(curl -fsSL https://install.julialang.org)"
+    echo "The \`julia\` command is not availible on this system—installing it now. Feel free to use the default settings."
+    curl -fsSL https://install.julialang.org | sh
+
+    echo "Now that Julia is installed, we can install $pkg. This might take a while." # Ecosystem-wide TTFX issues...
+    # Julia may not yet be on the path of this shell so we launch with an absolute path
+        # TODO make this path cross platform
+    echo $install | ~/.julia/juliaup/bin/julialauncher # TODO failfast is broken
+fi
+
+# Create script
+echo 'julia -e '\''import Pkg; Pkg.activate("$p", shared=true); Pkg.update(); using $p: main; main()'\'' $0 $@' | awk '{gsub(/\$p/, p)} 1' p=$pkg>$pkg
+chmod +x $pkg
+
+echo "Installation succeeded!"
+echo "Double click on the $pkg file to run the program"
+echo "$pkg is currently located at $pwd, but feel free to move it somewhere more convenient"
