@@ -29,7 +29,7 @@ else
 fi
 
 # Create script
-echo 'julia -e '\''import Pkg; Pkg.activate("$p", shared=true); Pkg.update(); using $p: main; main()'\'' $0 $@' | awk '{gsub(/\$p/, p)} 1' p=$pkg>$pkg
+echo 'julia -e '\''import Pkg; Pkg.activate("$p", shared=true); try Pkg.update() catch; println("Warning: update failed") end; using $p: main; main()'\'' $0 $@' | awk '{gsub(/\$p/, p)} 1' p=$pkg>$pkg
 chmod +x $pkg
 
 echo "Installation succeeded!"
