@@ -6,36 +6,40 @@ share with folks who do not use Julia? This is for you.
 # Usage
 
 If a Julia package provides standalone functionality through a `main()` function, then
-the following command will install it on any supported system
-
-## Linux/Mac
+the following command will install it on any Linux or Mac, wheather or not Julia is already installed:
 ```
 curl -fLsS https://raw.githubusercontent.com/lilithhafner/quickdraw/main/script | sh -s LOCATOR
 ```
-
-## Windows
+And on windows the following command will install it, but Julia must be installed separately
 ```
 (echo julia -e "import Pkg; Pkg.activate(\"PACKAGE\", shared=true); try Pkg.add(url=\"LOCATOR\") catch; println(\"Warning: update failed\") end; using PACKAGE: main; main()" %0 %* && echo pause) > PACKAGE.bat
 ```
 
-where LOCATOR is the url of the package or, if registered, simply the name of the package.
+LOCATOR is the url of the package or, if registered, simply the name of the package.
 In the Windows version, omit `url=` for registered packages.
 
-For example, to install [ManualImageCoding.jl](https://github.com/LilithHafner/ManualImageCoding.jl),
-run this command:
+# Example
 
-## Linux and Mac
+The following is found in the [README of ManualImageCoding.jl](https://github.com/LilithHafner/ManualImageCoding.jl):
+
+---
+
+## Installation
+
+To install this software on Linux or Mac, run the following command:
+
 ```
 curl -fLsS https://raw.githubusercontent.com/lilithhafner/quickdraw/main/script | sh -s https://github.com/LilithHafner/ManualImageCoding.jl
 ```
 
-## Windows
+To install this software on Windows, install Julia and then run the following command:
 ```
 (echo julia -e "import Pkg; Pkg.activate(\"ManualImageCoding\", shared=true); try Pkg.add(url=\"https://github.com/LilithHafner/ManualImageCoding.jl\"); catch; println(\"Warning: update failed\") end; using ManualImageCoding: main; main()" %0 %* && echo pause) > ManualImageCoding.bat
 ```
 
-This command will create an executable called `ManualImageCoding` that can be double
-clicked to run the main function of the package
+In all cases, the command will create an executable called `ManualImageCoding` that can be double clicked to run.
+
+---
 
 # Supported Systems
 
