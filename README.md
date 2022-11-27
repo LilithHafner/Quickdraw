@@ -1,4 +1,4 @@
-Do you have a Julia package that provides standalone functionalit whihc you would like to 
+Do you have a Julia package that provides standalone functionality which you would like to 
 share with folks who do not use Julia? This is for you.
 
 # Usage
