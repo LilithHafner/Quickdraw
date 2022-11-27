@@ -8,25 +8,44 @@ share with folks who do not use Julia? This is for you.
 If a Julia package provides standalone functionality through a `main()` function, then
 the following command will install it on any supported system
 
+## Linux/Mac
 ```
 curl -fLsS https://raw.githubusercontent.com/lilithhafner/quickdraw/main/script | sh -s LOCATOR
 ```
-where LOCATOR is the url of the package or, if registered, simply the name of the package.
 
-For example, to install [ManualImageCoding.jl](https://github.com/LilithHafner/ManualImageCoding.jl), run this command
+## Windows
+```
+echo julia -e "import Pkg; Pkg.activate(\"PACKAGE\", shared=true); Pkg.add(url=\"LOCATOR\"); using PACKAGE: main; main()" > PACKAGE.bat
+```
+
+where LOCATOR is the url of the package or, if registered, simply the name of the package.
+In the Windows version, omit `url=` for registered packages.
+
+For example, to install [ManualImageCoding.jl](https://github.com/LilithHafner/ManualImageCoding.jl),
+run this command:
+
+## Linux and Mac
 ```
 curl -fLsS https://raw.githubusercontent.com/lilithhafner/quickdraw/main/script | sh -s https://github.com/LilithHafner/ManualImageCoding.jl
 ```
+
+## Windows
+```
+echo julia -e "import Pkg; Pkg.activate(\"ManualImageCoding\", shared=true); Pkg.add(url=\"https://github.com/LilithHafner/ManualImageCoding.jl\"); using ManualImageCoding: main; main()" > ManualImageCoding.bat
+```
+
 This command will create an executable called `ManualImageCoding` that can be double
 clicked to run the main function of the package
 
 # Supported Systems
 
-- MacOS is supported and tested
+- MacOS is supported and lightly tested
+- Windows is supported and lightly tested, but you need to install Julia separately from the windows store.
 - Linux might work
-- Windows might work if you already have julia installed
 
 # How it works
+
+## Linux and Mac
 
 The command above downloads [this script](script) and runs it with the locator of the
 package as an argument. The script checks if Julia is installed, and if not, guides the user
@@ -39,6 +58,10 @@ julia -e 'import Pkg; Pkg.activate("PackageName", shared=true); Pkg.update(); us
 ```
 It launches julia, activates the shared environment, loads the package, and runs the main
 function. This script is relocatable to anywhere within the user's computer.
+
+## Windows
+
+The command creates a batch file that invokes julia, installs or updates the requested package, and runs the package's main function.
 
 # Accessing the path to the App
 
