@@ -8,18 +8,20 @@ This is the command:
 ```
 curl -fLsS https://raw.githubusercontent.com/lilithhafner/quickdraw/main/script | sh -s LOCATOR
 ```
-where LOCATOR is the url of the package, or, if registered, simply the name of the package.
+where LOCATOR is the url of the package or, if registered, simply the name of the package.
 
-For example, to install ManualImageCoding.jl, run this command
+For example, to install [ManualImageCoding.jl](https://github.com/LilithHafner/ManualImageCoding.jl), run this command
 ```
 curl -fLsS https://raw.githubusercontent.com/lilithhafner/quickdraw/main/script | sh -s https://github.com/LilithHafner/ManualImageCoding.jl
 ```
+This command will create an executable called `ManualImageCoding` that can be double 
+clicked to run the main function of the package
 
 # Supported Systems
 
-MacOS is supported and tested
-Linux might work
-Windows might work if you already have julia installed
+- MacOS is supported and tested
+- Linux might work
+- Windows might work if you already have julia installed
 
 # How it works
 
