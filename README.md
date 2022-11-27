@@ -1,4 +1,6 @@
-Do you have a Julia package that provides standalone functionality which you would like to 
+# Work in progress
+
+Do you have a Julia package that provides standalone functionality which you would like to
 share with folks who do not use Julia? This is for you.
 
 # Usage
@@ -15,7 +17,7 @@ For example, to install [ManualImageCoding.jl](https://github.com/LilithHafner/M
 ```
 curl -fLsS https://raw.githubusercontent.com/lilithhafner/quickdraw/main/script | sh -s https://github.com/LilithHafner/ManualImageCoding.jl
 ```
-This command will create an executable called `ManualImageCoding` that can be double 
+This command will create an executable called `ManualImageCoding` that can be double
 clicked to run the main function of the package
 
 # Supported Systems
