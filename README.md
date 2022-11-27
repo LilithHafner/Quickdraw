@@ -1,10 +1,11 @@
+Do you have a Julia package that provides standalone functionalit whihc you would like to 
+share with folks who do not use Julia? This is for you.
+
 # Usage
 
-If you have a julia package that provides standalone functionality through a `main()`
-function, then you can use the following command to install that package on any supported
-system (see below)
+If a Julia package provides standalone functionality through a `main()` function, then
+the following command will install it on any supported system
 
-This is the command:
 ```
 curl -fLsS https://raw.githubusercontent.com/lilithhafner/quickdraw/main/script | sh -s LOCATOR
 ```
