@@ -1,5 +1,3 @@
-This repository facilitates the instillation and use of Julia packages on systems that do not currently have Julia.
-
 # Usage
 
 If you have a julia package that provides standalone functionality through a `main()`
