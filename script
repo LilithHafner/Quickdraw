@@ -15,7 +15,7 @@ if julia -v
 then
     # Julia is installed
     echo "This might take a while." # Ecosystem-wide TTFX issues...
-    echo $install | julia # TODO failfast is broken
+    julia -e "${install}"
 else
     # Julia is missing; install it with juliaup (https://github.com/JuliaLang/juliaup)
     # Use manual install b.c. script install is broken (https://github.com/JuliaLang/juliaup/issues/464)
@@ -25,7 +25,7 @@ else
 
     echo "Now that Julia is installed, we can install $pkg. This might take a while." # Ecosystem-wide TTFX issues...
     # Julia may not yet be on the path of this shell so we launch with an absolute path
-    echo $install | ~/.julia/juliaup/bin/julialauncher
+    ~/.julia/juliaup/bin/julialauncher -e "${install}"
 fi
 
 # Create script
