@@ -28,6 +28,15 @@ else
     ~/.julia/juliaup/bin/julialauncher -e "${install}"
 fi
 
+# Move from ~ to ~/Desktop so that the script will be more easily located (if possible)
+dir=$(pwd)
+set +e
+if [ $(pwd) = ~ ]
+then
+cd Desktop
+fi
+set -e
+
 # Create script
 echo 'julia -e '\''import Pkg; Pkg.activate("$p", shared=true); try Pkg.update() catch; println("Warning: update failed") end; using $p: main; main()'\'' $0 $@' | awk '{gsub(/\$p/, p)} 1' p=$pkg>$pkg
 chmod +x $pkg
@@ -35,3 +44,4 @@ chmod +x $pkg
 echo "Installation succeeded!"
 echo "Double click on the $pkg file to run the program"
 echo "$pkg is currently located at $(pwd), but feel free to move it somewhere more convenient"
+cd $dir
