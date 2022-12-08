@@ -1,22 +1,32 @@
-# Work in progress
-
 Do you have a Julia package that provides standalone functionality which you would like to
 share with folks who do not use Julia? This is for you.
 
-# Usage
+# How do deploy with Quickdraw
 
-If a Julia package provides standalone functionality through a `main()` function, then
-the following command will install it on any Linux or Mac, wheather or not Julia is already installed:
+Make a Julia package with a `main()` function and put this this in your README.md
+
+````
+# Installation using [Quickdraw](https://github.com/LilithHafner/Quickdraw)
+
+To install this software on Linux or Mac, run the following command:
+
 ```
-curl -fLsS https://raw.githubusercontent.com/lilithhafner/quickdraw/main/script | sh -s LOCATOR
-```
-And on windows the following command will install it, but Julia must be installed separately
-```
-(echo julia -e "import Pkg; Pkg.activate(\"PACKAGE\", shared=true); try Pkg.add(url=\"LOCATOR\") catch; println(\"Warning: update failed\") end; using PACKAGE: main; main()" %0 %* && echo pause) > PACKAGE.bat
+curl -fLsS https://lilithhafner.com/quickdraw | sh -s https://github.com/MyUsernameOrOrg/MyPackage.jl
 ```
 
-LOCATOR is the url of the package or, if registered, simply the name of the package.
-In the Windows version, omit `url=` for registered packages.
+To install this software on Windows, install Julia and then run the following command:
+```
+(echo julia -e "import Pkg; Pkg.activate(\"MyPackage\", shared=true); try Pkg.add(url=\"https://github.com/MyUsernameOrOrg/MyPackage.jl\"); catch; println(\"Warning: update failed\") end; using MyPackage: main; main()" %0 %* && echo pause) > MyPackage.bat
+```
+
+In both cases, the command will create an executable called `MyPackage` that can be double clicked to run.
+````
+
+Things to remember
+- Change `MyUserNameOrOrg` to yor github username or the name of your the github organization that hosts the package being deployed. For example `LilithHafner` or `JuliaCollections`.
+- Change `MyPackage` to your package name (excluding `.jl`). For example `Minesweeper` or `BouncingBall`.
+- Unlike in a REPL, the application will exit when your main function exits. You can put `wait()` at the end of your `main()` function to prevent it from exiting.
+- Quickdraw automatically installs Julia if it is not already installed on Mac and Linux systems. On Windows systems, the user must ensure that Julia is installed before running the Quickdraw command.
 
 # Example
 
@@ -24,12 +34,12 @@ The following is found in the [README of ManualImageCoding.jl](https://github.co
 
 ---
 
-## Installation
+### Installation using [Quickdraw](https://github.com/LilithHafner/quickdraw)
 
 To install this software on Linux or Mac, run the following command:
 
 ```
-curl -fLsS https://raw.githubusercontent.com/lilithhafner/quickdraw/main/script | sh -s https://github.com/LilithHafner/ManualImageCoding.jl
+curl -fLsS https://lilithhafner.com/quickdraw | sh -s https://github.com/LilithHafner/ManualImageCoding.jl
 ```
 
 To install this software on Windows, install Julia and then run the following command:
@@ -37,7 +47,7 @@ To install this software on Windows, install Julia and then run the following co
 (echo julia -e "import Pkg; Pkg.activate(\"ManualImageCoding\", shared=true); try Pkg.add(url=\"https://github.com/LilithHafner/ManualImageCoding.jl\"); catch; println(\"Warning: update failed\") end; using ManualImageCoding: main; main()" %0 %* && echo pause) > ManualImageCoding.bat
 ```
 
-In all cases, the command will create an executable called `ManualImageCoding` that can be double clicked to run.
+In both cases, the command will create an executable called `ManualImageCoding` that can be double clicked to run.
 
 ---
 
@@ -71,3 +81,7 @@ The command creates a batch file that invokes julia, installs or updates the req
 
 The package may access the path of the double-clickable app with `ARGS[1]`. If the app is
 invoked from the command line, then `ARGS[2:end]` will reflect the command line arguments.
+
+# Deploying registered packages
+
+You may deploy registered packages just like unregistered packages using a full URL.
