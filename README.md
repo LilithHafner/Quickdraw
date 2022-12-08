@@ -53,9 +53,10 @@ In both cases, the command will create an executable called `ManualImageCoding` 
 
 # Supported Systems
 
-- MacOS is supported and lightly tested
+- MacOS is supported and tested
+- Linux is supported and lightly tested
 - Windows is supported and lightly tested, but you need to install Julia separately from the windows store.
-- Linux might work
+
 
 # How it works
 
