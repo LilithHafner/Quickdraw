@@ -3,7 +3,7 @@ share with folks who do not use Julia? This is for you.
 
 # How do deploy with Quickdraw
 
-Make a Julia package with a `main()` function and put this this in your README.md
+Make a Julia package with a `main()` function, put it in a public github repo, and put this this in your README.md
 
 ````
 # Installation using [Quickdraw](https://github.com/LilithHafner/Quickdraw)
