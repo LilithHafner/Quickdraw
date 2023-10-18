@@ -57,6 +57,14 @@ In both cases, the command will create an executable called `ManualImageCoding` 
 - Linux is supported and lightly tested
 - Windows is supported and lightly tested, but you need to install Julia separately from the windows store.
 
+# Local directories
+
+You can specify a local path instead of a URL with, for example,
+```sh
+curl -fLsS https://lilithhafner.com/quickdraw | sh -s ~/.julia/dev/MyExample
+```
+This will use the latest commit of the default branch of the package at `~/.julia/dev/MyExample`, 
+assuming the file `~/.julia/dev/MyExample/src/MyExample.jl` exists and defines a `main()` function.
 
 # How it works
 
