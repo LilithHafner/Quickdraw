@@ -23,7 +23,7 @@ In both cases, the command will create an executable called `MyPackage` that can
 ````
 
 Things to remember
-- Change `MyUserNameOrOrg` to yor github username or the name of your the github organization that hosts the package being deployed. For example `LilithHafner` or `JuliaCollections`.
+- Change `MyUserNameOrOrg` to your github username or the name of your the github organization that hosts the package being deployed. For example `LilithHafner` or `JuliaCollections`.
 - Change `MyPackage` to your package name (excluding `.jl`). For example `Minesweeper` or `BouncingBall`.
 - Unlike in a REPL, the application will exit when your main function exits. You can put `wait()` at the end of your `main()` function to prevent it from exiting.
 - Quickdraw automatically installs Julia if it is not already installed on Mac and Linux systems. On Windows systems, the user must ensure that Julia is installed before running the Quickdraw command.
