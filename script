@@ -1,6 +1,6 @@
 set -e # Failfast (broken)
 
-loc=$1 # Create varaibles
+loc=$1 # Create variables
 pkg=$(basename $loc .jl)
 if [ $loc = $pkg ]
 then
@@ -18,10 +18,8 @@ then
     julia -e "${install}"
 else
     # Julia is missing; install it with juliaup (https://github.com/JuliaLang/juliaup)
-    # Use manual install b.c. script install is broken (https://github.com/JuliaLang/juliaup/issues/464)
-    # expect -c 'spawn bash -c "curl -fsSL https://install.julialang.org | sh"; expect "Proceed"; send -- "\r"; expect eof' || exit 1
-    echo "The \`julia\` command is not availible on this system—installing it now. Feel free to use the default settings."
-    curl -fsSL https://install.julialang.org | sh
+    echo "The \`julia\` command is not available on this system—installing it now."
+    curl -fsSL https://install.julialang.org | sh -s -- --yes
 
     echo "Now that Julia is installed, we can install $pkg. This might take a while." # Ecosystem-wide TTFX issues...
     # Julia may not yet be on the path of this shell so we launch with an absolute path
